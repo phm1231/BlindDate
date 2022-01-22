@@ -1,0 +1,39 @@
+// 프로젝트의 Configuration을 관리하는 파일
+
+// 프로젝트에 사용할 Plugin을 설정한다.
+// Spring boot를 사용하기 위해 필수적인 항목 이하 3개
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+// 자바 코드 컴파일 버전
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+// Dependencies Library의 저장소 지정
+repositories {
+	mavenCentral()
+}
+
+// 라이브러리 의존성 관리
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
