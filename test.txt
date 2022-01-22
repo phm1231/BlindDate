@@ -1,2 +1,0 @@
-Hello World!
-git 확인용
