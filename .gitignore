@@ -15,3 +15,8 @@
 .gradle
 bin
 BlindDate/src/main/resources/application.properties
+.ideas
+BlindDate/.gradle
+BlindDate/.idea
+BlindDate/build
+BlindDate/out
