@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import React, {Component} from 'react';
 import DashBoard from './component/dashboard';
-import ToggleButton from './component/toggleButton';
-import SlideInput from './component/slideInput';
+import SignUp from './component/signUp';
+import NavVar from './component/navVar';
 
 class App extends Component{
   constructor(props){
@@ -55,193 +55,31 @@ class App extends Component{
     const pageNum = this.state.page;
     let page;
     if(isLogin){
-      if(pageNum == 1){
-        page =
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link active">프로필</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleHomeClick} class="nav-link active">홈</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleMatchingClick} class="nav-link active">나의 매칭</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleMessageClick} class="nav-link active">알림함</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-8">
-                <DashBoard pageNum={this.state.page}/>
-              </div>
-              <div class="col">
-                ad
-              </div>
+      page =
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <NavVar
+                item1={<a onClick={this.handleHomeClick} class="nav-link active">홈</a>}
+                item2={<a onClick={this.handleMatchingClick} class="nav-link active">나의 매칭</a>}
+                item3={<a onClick={this.handleMessageClick} class="nav-link active">알림함</a>}
+                pageNum={this.state.page}
+              />
             </div>
-          </div>;
-      }
-      if(pageNum == 2){
-        page =
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link active">프로필</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleHomeClick} class="nav-link active">홈</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleMatchingClick} class="nav-link active">나의 매칭</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleMessageClick} class="nav-link active">알림함</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-8">
-                <DashBoard pageNum={this.state.page}/>
-              </div>
-              <div class="col">
-                ad
-              </div>
+            <div class="col-8">
+              <DashBoard pageNum={this.state.page}/>
             </div>
-          </div>;
-      }
-      if(pageNum == 3){
-        page =
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link active">프로필</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleHomeClick} class="nav-link active">홈</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleMatchingClick} class="nav-link active">나의 매칭</a>
-                  </li>
-                  <li class="nav-item">
-                    <a onClick={this.handleMessageClick} class="nav-link active">알림함</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-8">
-                <DashBoard pageNum={this.state.page}/>
-              </div>
-              <div class="col">
-                ad
-              </div>
+            <div class="col">
+              ad
             </div>
-          </div>;
-      }
+          </div>
+        </div>;
     }
     else{
       if(isSignUp){
         page =
-          <div class="container-xl border border-primary">
-            <div id="picture" class="d-block carousel Slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="..." class="d-block w-100" alt="..."/>
-                </div>
-              </div>
-            </div>
-            <form>
-              <div class="form-group">
-                <label class="d-block" for="FormControlFile1">Example file input</label>
-                <input type="file" class="form-control-file" id="FormControlFile1"/>
-              </div>
-              <div class="form-group">
-                <label for="InputID1">아이디</label>
-                <input type="email" class="form-control" id="InputID1" aria-describedby="IDHelp"/>
-              </div>
-              <div class="form-group">
-                <label for="InputPassword1">비밀번호</label>
-                <input type="password" class="form-control" id="InputPassword1"/>
-              </div>
-              <hr class="my-4"/>
-              <h3>회원 정보</h3>
-              <div>
-                성별<ToggleButton left="남" right="여"/>
-              </div>
-              <div class="form-group">
-                <label for="InputEmail1">아이디</label>
-                <input type="email" class="form-control" id="InputEmail1" aria-describedby="EmailHelp"/>
-              </div>
-              <div class="form-group">
-                <label for="InputAge">나이</label>
-                <input type="Age" class="form-control" id="InputAge"/>
-              </div>
-              <div class="form-group">
-                <label for="InputHeight">키</label>
-                <input type="Height" class="form-control" id="InputHeight"/>
-              </div>
-              <select class="custom-select">
-                <option selected>단과대 선택</option>
-                <option value="1">IT대학</option>
-              </select>
-              <select class="custom-select">
-                <option selected>학과 선택</option>
-                <option value="1">소프트웨어 학과</option>
-              </select>
-              <div>
-                MBTI
-                <ToggleButton left="E" right="I"/>
-                <ToggleButton left="S" right="N"/>
-                <ToggleButton left="T" right="F"/>
-                <ToggleButton left="J" right="P"/>
-              </div>
-              <div class="form-group">
-                <label for="hobby">취미</label>
-                <textarea type="hobby" class="form-control" id="hobby"/>
-              </div>
-              <hr class="my-4"/>
-              <h3>취향 정보</h3>
-              <select class="custom-select">
-                <option selected>키 선택</option>
-                <option value="1">150이하</option>
-                <option value="2">150-155</option>
-                <option value="2">155-160</option>
-                <option value="2">160-165</option>
-                <option value="2">165-170</option>
-                <option value="2">170-175</option>
-                <option value="2">175-180</option>
-                <option value="2">180-185</option>
-                <option value="2">185-190</option>
-                <option value="2">190-195</option>
-                <option value="2">195이상</option>
-              </select>
-              <div class="d-block">
-                <SlideInput name="최대 나이" id="range1"/>
-                <SlideInput name="최소 나이" id="range2"/>
-              </div>
-              <div>
-                MBTI
-                <ToggleButton left="E" right="I"/>
-                <ToggleButton left="S" right="N"/>
-                <ToggleButton left="T" right="F"/>
-                <ToggleButton left="J" right="P"/>
-              </div>
-              <select class="custom-select">
-                <option selected>단과대 선택</option>
-                <option value="1">IT대학</option>
-              </select>
-              <select class="custom-select">
-                <option selected>학과 선택</option>
-                <option value="1">소프트웨어 학과</option>
-              </select>
-            </form>
-            <hr class="my-4"/>
-            <button onClick={this.submitSignUpClick} type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
-          </div>
+          <SignUp handleOut={this.submitSignUpClick}/>
+        ;
       }
       else{
         page =

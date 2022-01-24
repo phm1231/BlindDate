@@ -19,7 +19,7 @@ class SlideInput extends Component{
   render(){
     const age = parseInt(this.state.value)+19;
     let output;
-    
+
     if(age == 19){
       output = "상관 없음"
     }

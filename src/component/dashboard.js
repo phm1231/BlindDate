@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { useEffect, useState } from 'react';
 
 class DashBoard extends Component {
   constructor(props){
@@ -29,7 +28,8 @@ class DashBoard extends Component {
           <hr class="my-4"/>
           <p>당신을 위한 인연이 준비중입니다.</p>
           <button onClick={this.handleClick} class="btn btn-primary btn-lg" type="button">지금 당장 확인하기</button>
-        </div>;
+        </div>
+      ;
     }
     else{
       if(!isSelect){
@@ -37,7 +37,8 @@ class DashBoard extends Component {
           <div>
             <div class="spinner-border text-primary" role="status">
             </div>
-          </div>;
+          </div>
+        ;
       }
       else{
         page =
@@ -63,6 +64,7 @@ class DashBoard extends Component {
               </div>
             </div>
           </div>
+        ;
       }
     }
     if(this.props.pageNum == 2){
@@ -89,6 +91,7 @@ class DashBoard extends Component {
             </div>
           </div>
         </div>
+      ;
     }
     if(this.props.pageNum == 3){
       page =
@@ -102,6 +105,7 @@ class DashBoard extends Component {
             </div>
           </div>
         </div>
+      ;
     }
     return(
      <div>
