@@ -4,29 +4,36 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React, {Component} from 'react';
 import DashBoard from './component/dashboard';
 import SignUp from './component/signUp';
+import SignIn from './component/signIn';
 import NavVar from './component/navVar';
 
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      login : false,
+      signIn : false,
       signUp : false,
+      login : false,
       page : 1
     };
   }
 
   handleSignUpClick = () => {
     this.setState({
-      login : false,
       signUp : true
     });
   }
 
-  submitSignUpClick = () => {
+  handleSignInClick = () => {
+    this.setState({
+      signIn : true,
+      signUp : true
+    });
+  }
+
+  submitLoginClick = () => {
     this.setState({
       login : true,
-      signUp : true,
       page : 1
     });
   }
@@ -51,6 +58,7 @@ class App extends Component{
 
   render(){
     const isLogin = this.state.login;
+    const isSignIn = this.state.signIn;
     const isSignUp = this.state.signUp;
     const pageNum = this.state.page;
     let page;
@@ -75,21 +83,30 @@ class App extends Component{
           </div>
         </div>;
     }
-    else{
-      if(isSignUp){
+    else {
+      if (isSignIn) {
         page =
-          <SignUp handleOut={this.submitSignUpClick}/>
+            <SignIn handleOut={this.submitLoginClick}/>
         ;
-      }
-      else{
-        page =
-          <div class="container-xl border border-primary">
-            <img src="img/caitlyn_splash_12.jpg" class="d-block img-fluid"/>
-            <p>대충 가입 권유 하는 메세지</p>
-            <p>대충 가입하시면 취향분석을 통해 당신의 이상형을 만나게 해준다는 이야기</p>
-            <p><button onClick={this.handleSignUpClick} type="button" class="btn btn-primary btn-block">회원가입</button></p>
-            <p><button onClick={this.submitSignUpClick} type="button" class="btn btn-secondary btn-block">로그인</button></p>
-          </div>
+      } else {
+        if (isSignUp) {
+          page =
+              <SignUp handleOut={this.submitLoginClick}/>
+          ;
+        } else {
+          page =
+              <div class="container-xl border border-primary">
+                  <img src="img/caitlyn_splash_12.jpg" class="d-block img-fluid"/>
+                  <p>대충 가입 권유 하는 메세지</p>
+                  <p>대충 가입하시면 취향분석을 통해 당신의 이상형을 만나게 해준다는 이야기</p>
+                  <p>
+                      <button onClick={this.handleSignUpClick} type="button" class="btn btn-primary btn-block">회원가입</button>
+                  </p>
+                  <p>
+                      <button onClick={this.handleSignInClick} type="button" class="btn btn-secondary btn-block">로그인</button>
+                  </p>
+              </div>
+        }
       }
     }
 

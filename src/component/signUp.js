@@ -5,6 +5,8 @@ import MultiToggleInput from './multiToggleInput';
 import SlideInput from './slideInput';
 import SelectList from './selectList';
 import CondSelectList from './condSelectList';
+import InputPassword from "./inputPassword";
+import MultiInputPassword from "./multiInputPassword";
 
 class SignUp extends Component{
   constructor(props){
@@ -12,7 +14,7 @@ class SignUp extends Component{
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       pageNum : 1,
-      value : 1
+      InputPassword1 : ""
     };
   }
 
@@ -23,21 +25,20 @@ class SignUp extends Component{
   }
 
   handleChange(e){
+    const id = e.target.id;
     this.setState({
-      value : e.target.value
+      [id] : e.target.value
     });
-    this.checkValidity(this.state.value);
-    console.log(this.state.value);
+    console.log(e.target.id);
   }
 
   checkValidity(password){
-    const regex = /^[a-zA-Z0-9]/;
+    const regex = /[^a-zA-Z0-9]/;
     if(password == ""){
       return "비밀번호를 입력해 주세요.";
     }
     if(!regex.test(password)){
-      console.log(!regex.test(password));
-      return "사용가능하지 않은 문자가 포함되어 있습니다."
+      return "사용가능하지 않은 문자가 포함되어 있습니다.";
     }
   }
 
@@ -59,18 +60,14 @@ class SignUp extends Component{
               <label class="d-block" for="FormControlFile1">Example file input</label>
               <input type="file" class="form-control-file" id="FormControlFile1"/>
             </div>
-            <div class="form-group">
-              <label for="InputID1">아이디</label>
-              <input type="email" class="form-control" id="InputID1" aria-describedby="IDHelp"/>
+            <label htmlFor="button-addon">아이디</label>
+            <div className="input-group mb-3">
+              <input type="email" className="form-control" id="button-addon" aria-describedby="emailHelp"/>
+              <div className="input-group-append">
+                <button className="btn btn-outline-secondary" type="button" id="button-addon">중복체크</button>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="InputPassword1">비밀번호</label>
-              <input onChange={this.handleChange} value={this.state.value} type="password" class="form-control" id="InputPassword1"/>
-            </div>
-            <div class="form-group">
-              <label for="InputPassword2">비밀번호 확인</label>
-              <input type="password" class="form-control" id="InputPassword2"/>
-            </div>
+            <MultiInputPassword/>
           </form>
           <hr class="my-4"/>
           <button onClick={this.onClickNext} type="button" class="btn btn-primary btn-lg btn-block">다음</button>
@@ -85,10 +82,6 @@ class SignUp extends Component{
           <form>
             <div>
               성별<ToggleInput left="남" right="여"/>
-            </div>
-            <div class="form-group">
-              <label for="InputEmail1">아이디</label>
-              <input type="email" class="form-control" id="InputEmail1" aria-describedby="EmailHelp"/>
             </div>
             <div class="form-group">
               <label for="InputAge">나이</label>
